@@ -1,0 +1,17 @@
+WARNING: You are currently using Node.js v25.9.0, which is not supported by Hardhat. This can lead to unexpected behavior. See https://v2.hardhat.org/nodejs-versions
+
+
+
+
+  ChainProv-City: Authority-Based Provenance Framework
+    ✔ TC-001: should revert when unauthorised account attempts verification
+    ✔ TC-002: should record vote when authorised authority approves
+    ✔ TC-003: should reject duplicate votes from same authority
+    ✔ TC-004: should transition to VERIFIED when threshold k is met
+    ✔ TC-005: should remain REPORTED with insufficient approvals
+    ✔ TC-006: should revert invalid state transitions
+    ✔ TC-007: should revert verification attempts after terminal state
+
+
+  7 passing (2s)
+

@@ -1,0 +1,16 @@
+{
+  "name": "chainprov-city",
+  "version": "1.0.0",
+  "description": "Authority-based blockchain provenance for smart city surveillance",
+  "scripts": {
+    "test": "npx hardhat test",
+    "deploy": "npx hardhat run scripts/deploy.js"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^4.0.0",
+    "hardhat": "^2.19.0"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.9.6"
+  }
+}

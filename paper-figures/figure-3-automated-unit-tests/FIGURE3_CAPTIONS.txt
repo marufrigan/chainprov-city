@@ -1,0 +1,10 @@
+Figure 3 — Automated unit test execution (ChainProv-City prototype)
+
+Figure 3(a) — Command and environment
+Automated test invocation via `npm test` (which runs `npx hardhat test`) in the project workspace, with the Hardhat Node.js compatibility notice and toolchain context (Node.js, npm, Hardhat, Solidity 0.8.19, local Hardhat network) for reproducibility.
+
+Figure 3(b) — Named test suite and early cases (TC-001–TC-004)
+Mocha output for the suite “ChainProv-City: Authority-Based Provenance Framework” showing successful execution of TC-001 through TC-004: unauthorized verifier rejection, authorized approval recording, duplicate-vote rejection, and k-of-m threshold transition to VERIFIED.
+
+Figure 3(c) — Remaining cases and aggregate outcome (TC-005–TC-007)
+Successful execution of TC-005 through TC-007—insufficient approvals while below k, invalid transition after REJECTED, and vote rejection after a terminal VERIFIED state—with the aggregate result line reporting all tests passed and wall-clock runtime.
