@@ -1,0 +1,31 @@
+
+
+  ChainProv-City: Authority-Based Provenance Framework
+    ✔ TC-001: should revert when unauthorised account attempts verification (41ms)
+    ✔ TC-002: should record vote when authorised authority approves
+    ✔ TC-003: should reject duplicate votes from same authority
+    ✔ TC-004: should transition to VERIFIED when threshold k is met
+    ✔ TC-005: should not reach VERIFIED with fewer than k approvals
+    ✔ TC-006: should revert invalid state transitions (REJECTED to VERIFIED)
+    ✔ TC-007: should revert verification attempts after terminal state
+    ✔ TC-024: off-chain and on-chain canonical commitments must agree
+    ✔ TC-008: should reject event reports from non-gateway accounts
+    ✔ TC-009: should reject forged source attribution (gateway key signs for Camera-174)
+    ✔ TC-010: should reject unregistered devices and revoked devices (42ms)
+    ✔ TC-011: should reject replayed content and duplicate commitments
+    ✔ TC-012: should reject stale or future-dated captures
+    ✔ TC-013: should reject only when k approvals become unreachable (rejections > m - k)
+    ✔ TC-014: should escalate to DISPUTED on timeout and fail safe to REJECTED (40ms)
+    ✔ TC-015: should allow a DISPUTED event to be resolved during escalation
+    ✔ TC-016: should require kGov approvals for membership changes; deployer has no privilege
+    ✔ TC-017: should bind eligibility to the event epoch and block revoked authorities
+    ✔ TC-018: should restrict break-glass to CRITICAL events and ACTOR roles without changing state
+    ✔ TC-019: should enforce VERIFIED -> ACTIONED -> CLOSED and actor roles
+    ✔ TC-020: should keep a hash-chained, strictly monotonic provenance trail (38ms)
+    ✔ TC-021: should finalise exactly once when conflicting decisive votes share a block
+    ✔ TC-022: deepfake riot alert: forged attribution blocked; re-captured deepfake rejected by agencies
+    ✔ TC-023: should apply threshold changes only to events reported after the change (52ms)
+
+
+  24 passing (4s)
+

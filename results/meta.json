@@ -1,0 +1,52 @@
+{
+ "tests": 24,
+ "coverage": {
+  "stmt": "91.38",
+  "branch": "70.77",
+  "func": "92.59",
+  "lines": "92.59"
+ },
+ "slither_version": "0.11.6",
+ "slither_detectors": 101,
+ "slither_high": 0,
+ "slither_medium": 0,
+ "slither_low": 5,
+ "slither_info": 4,
+ "slither_checks": [
+  [
+   [
+    "assembly",
+    "Informational"
+   ],
+   1
+  ],
+  [
+   [
+    "calls-loop",
+    "Low"
+   ],
+   2
+  ],
+  [
+   [
+    "costly-loop",
+    "Informational"
+   ],
+   2
+  ],
+  [
+   [
+    "cyclomatic-complexity",
+    "Informational"
+   ],
+   1
+  ],
+  [
+   [
+    "timestamp",
+    "Low"
+   ],
+   3
+  ]
+ ]
+}

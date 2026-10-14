@@ -1,0 +1,46 @@
+digraph lifecycle {
+  graph [rankdir=TB, fontname="TeX Gyre Termes", fontsize=10.5, nodesep=0.35, ranksep=0.55, splines=true, newrank=true, pad=0.12, bgcolor=white,
+         labelloc=b, labeljust=c,
+         label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="5" CELLSPACING="0"><TR><TD><B>ProvenanceTracker</B> (append-only, hash-chained): every transition appends<BR/><I>head<SUB>n</SUB></I> = keccak256(<I>head<SUB>n−1</SUB></I> ‖ id ‖ σ<SUB>from</SUB> ‖ σ<SUB>to</SUB> ‖ actor ‖ t ‖ dataHash).<BR/>The state rank <I>r</I>(σ) strictly increases on every state change (Invariant I4);<BR/>REJECTED and CLOSED are terminal.</TD></TR></TABLE>>];
+  node  [fontname="TeX Gyre Termes", fontsize=11, shape=box, style="rounded", penwidth=1.3, margin="0.12,0.06"];
+  edge  [fontname="TeX Gyre Termes", fontsize=8.8, penwidth=1.0, arrowsize=0.7];
+
+  start [shape=point, width=0.12, label=""];
+
+  subgraph cluster_reg {
+    label=<<I>Registration (Layer 1 → Layer 2)</I>>; labelloc=t; labeljust=r; style="dashed"; color="gray40"; fontsize=9.5; margin=10;
+    REPORTED [label=<<B>REPORTED</B><BR/><FONT POINT-SIZE="8.5">r = 0</FONT>>];
+  }
+
+  subgraph cluster_adj {
+    label=<<I>Threshold adjudication (Layer 2 ↔ Layer 3)</I>>; style="filled,dashed"; fillcolor="gray95"; color="gray40"; fontsize=9.5; margin=10;
+    UNDER_REVIEW [label=<<B>UNDER_REVIEW</B><BR/><FONT POINT-SIZE="8.5">r = 1</FONT>>, style="rounded,filled", fillcolor=white];
+    DISPUTED [label=<<B>DISPUTED</B><BR/><FONT POINT-SIZE="8.5">escalation window Δ<SUB>e</SUB>; r = 2</FONT>>, style="rounded,filled", fillcolor="gray86"];
+    VERIFIED [label=<<B>VERIFIED</B><BR/><FONT POINT-SIZE="8.5">r = 3</FONT>>, style="rounded,filled", fillcolor=white];
+    REJECTED [label=<<B>REJECTED</B><BR/><FONT POINT-SIZE="8.5">FALSE_ALARM | EXPIRED; r = 4</FONT>>, style="rounded,filled", fillcolor="gray75", peripheries=2];
+    BG [shape=note, style="dashed,filled", fillcolor=white, penwidth=0.9, fontsize=8.6,
+        label=<<B>breakGlass(reason)</B><BR/>[severity = CRITICAL, role ACTOR]<BR/>provisional response recorded;<BR/>state unchanged; k-of-m still required>];
+  }
+
+  subgraph cluster_resp {
+    label=<<I>Response and closure (Layer 3)</I>>; style="dashed"; color="gray40"; fontsize=9.5; margin=10;
+    ACTIONED [label=<<B>ACTIONED</B><BR/><FONT POINT-SIZE="8.5">r = 5</FONT>>];
+    CLOSED [label=<<B>CLOSED</B><BR/><FONT POINT-SIZE="8.5">RESOLVED | FALSE_ALARM; r = 6</FONT>>, style="rounded,filled", fillcolor="gray75", peripheries=2];
+  }
+
+  start -> REPORTED [label=<t0: reportEvent()<BR/>[gateway ∈ R, device<BR/>signature valid, fresh,<BR/>C<SUB>i</SUB>, h<SUB>d,i</SUB> unseen ]>];
+  REPORTED -> UNDER_REVIEW [label=<t1: submitVote()<BR/>[a ∈ A(e<SUB>i</SUB>) ,<BR/>no threshold reached]>];
+  UNDER_REVIEW -> UNDER_REVIEW [label=<submitVote()<BR/>[no threshold reached]>, headport=w, tailport=w];
+  UNDER_REVIEW -> VERIFIED [label=<t2: submitVote(approve)<BR/>[approvals ≥ k ]>];
+  UNDER_REVIEW -> REJECTED [label=<t3: submitVote(reject)<BR/>[rejections &gt; m − k ]>];
+  UNDER_REVIEW -> DISPUTED [label=<t4: finalizeTimeout()<BR/>[now &gt; deadline] /<BR/>deadline ← now + Δ<SUB>e</SUB>>];
+  REPORTED -> DISPUTED [style=dashed, label=<t4′: timeout,<BR/>no vote cast>];
+  DISPUTED -> VERIFIED [label=<t5: [approvals ≥ k ]>];
+  DISPUTED -> REJECTED [label=<t6: [rejections &gt; m − k ]<BR/>or finalizeTimeout()<BR/>/ outcome EXPIRED>];
+  VERIFIED -> ACTIONED [label=<t7: actionEvent()<BR/>[role ACTOR]>];
+  ACTIONED -> CLOSED [label=<t8: closeEvent(outcome)<BR/>[role ACTOR]>];
+  DISPUTED -> BG [style=dotted, arrowhead=none];
+  { rank=same; DISPUTED; UNDER_REVIEW; }
+  { rank=same; VERIFIED; REJECTED; BG; }
+  { rank=same; ACTIONED; CLOSED; }
+}

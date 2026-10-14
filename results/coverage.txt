@@ -1,0 +1,72 @@
+
+Version
+=======
+> solidity-coverage: v0.8.17
+
+Instrumenting for coverage...
+=============================
+
+> AuthorityManager.sol
+> EventRegistry.sol
+> ProvenanceTracker.sol
+
+Coverage skipped for:
+=====================
+
+> baseline/V1AuthorityManager.sol
+> baseline/V1EventRegistry.sol
+> baseline/V1ProvenanceTracker.sol
+
+Compilation:
+============
+
+Compiled 16 Solidity files successfully (evm target: paris).
+
+Network Info
+============
+> HardhatEVM: v2.28.6
+> network:    hardhat
+
+
+
+  ChainProv-City: Authority-Based Provenance Framework
+    ✔ TC-001: should revert when unauthorised account attempts verification (100ms)
+    ✔ TC-002: should record vote when authorised authority approves (100ms)
+    ✔ TC-003: should reject duplicate votes from same authority (64ms)
+    ✔ TC-004: should transition to VERIFIED when threshold k is met (90ms)
+    ✔ TC-005: should not reach VERIFIED with fewer than k approvals (95ms)
+    ✔ TC-006: should revert invalid state transitions (REJECTED to VERIFIED) (90ms)
+    ✔ TC-007: should revert verification attempts after terminal state (142ms)
+    ✔ TC-024: off-chain and on-chain canonical commitments must agree
+    ✔ TC-008: should reject event reports from non-gateway accounts
+    ✔ TC-009: should reject forged source attribution (gateway key signs for Camera-174) (56ms)
+    ✔ TC-010: should reject unregistered devices and revoked devices (93ms)
+    ✔ TC-011: should reject replayed content and duplicate commitments (111ms)
+    ✔ TC-012: should reject stale or future-dated captures (44ms)
+    ✔ TC-013: should reject only when k approvals become unreachable (rejections > m - k) (92ms)
+    ✔ TC-014: should escalate to DISPUTED on timeout and fail safe to REJECTED (107ms)
+    ✔ TC-015: should allow a DISPUTED event to be resolved during escalation (104ms)
+    ✔ TC-016: should require kGov approvals for membership changes; deployer has no privilege (49ms)
+    ✔ TC-017: should bind eligibility to the event epoch and block revoked authorities (169ms)
+    ✔ TC-018: should restrict break-glass to CRITICAL events and ACTOR roles without changing state (147ms)
+    ✔ TC-019: should enforce VERIFIED -> ACTIONED -> CLOSED and actor roles (172ms)
+    ✔ TC-020: should keep a hash-chained, strictly monotonic provenance trail (148ms)
+    ✔ TC-021: should finalise exactly once when conflicting decisive votes share a block (122ms)
+    ✔ TC-022: deepfake riot alert: forged attribution blocked; re-captured deepfake rejected by agencies (209ms)
+    ✔ TC-023: should apply threshold changes only to events reported after the change (270ms)
+
+
+  24 passing (6s)
+
+------------------------|----------|----------|----------|----------|----------------|
+File                    |  % Stmts | % Branch |  % Funcs |  % Lines |Uncovered Lines |
+------------------------|----------|----------|----------|----------|----------------|
+ contracts/             |    91.38 |    70.77 |    92.59 |    92.59 |                |
+  AuthorityManager.sol  |    91.49 |    56.45 |       90 |    90.63 |... 186,187,188 |
+  EventRegistry.sol     |    90.63 |    84.38 |    92.86 |    93.26 |... 165,235,246 |
+  ProvenanceTracker.sol |      100 |       75 |      100 |      100 |                |
+------------------------|----------|----------|----------|----------|----------------|
+All files               |    91.38 |    70.77 |    92.59 |    92.59 |                |
+------------------------|----------|----------|----------|----------|----------------|
+
+> Istanbul reports written to ./coverage/ and ./coverage.json

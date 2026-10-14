@@ -1,27 +1,34 @@
 # ChainProv-City Prototype
 
-Ethereum-based implementation of authority-based multi-agency verification for smart city surveillance events.  
-This prototype accompanies the academic chapter **"Springer Book Chapter - ChainProv-City"** and demonstrates how authority-level provenance can reduce deepfake-triggered false emergency escalation.
+Ethereum (EVM) implementation of authority-based, multi-agency verification of smart city events with blockchain provenance.
 
-## Architecture
+## Contracts
 
-- `AuthorityManager.sol`: whitelist and role management for city agencies (police, fire, medical, transport).
-- `EventRegistry.sol`: event reporting, k-of-m voting, and lifecycle state transitions.
-- `ProvenanceTracker.sol`: immutable audit trail of state changes and verifier justifications.
+- `AuthorityManager.sol`: roles (reporter, verifier, actor), device registry, authority epochs, and kGov-of-m governance proposals for every membership, device or threshold change. The deployer keeps no privilege after bootstrapping.
+- `EventRegistry.sol`: device-signed canonical commitments, replay and freshness guards, k-of-m adjudication (reject when rejections > m - k), review and escalation deadlines with a fail-safe REJECTED (EXPIRED) outcome, break-glass for CRITICAL events, action and closure. Seven-state lifecycle: REPORTED, UNDER_REVIEW, DISPUTED, VERIFIED, REJECTED, ACTIONED, CLOSED.
+- `ProvenanceTracker.sol`: append-only, hash-chained transition log writable only by the registry.
+- `baseline/`: the original (v1) contracts, kept unchanged for the gas comparison only.
 
-## Installation
+## Install and test
 
 ```bash
 npm install
+npx hardhat test          # 24 tests: functional, adversarial, governance, lifecycle
+npx hardhat coverage
 ```
 
-## Run tests
+If `binaries.soliditylang.org` is unreachable, install `solc@0.8.19` and prefix commands with `SOLCJS=1`.
+
+## Reproduce the evaluation
 
 ```bash
-npx hardhat test
+npx hardhat run scripts/bench-gas.js            # results/gas.json
+REPS=5 scripts/run-latency.sh                     # results/latency.jsonl (fresh node per setting, 2 s blocks)
+node scripts/bench-offchain.js                    # results/offchain.json
+scripts/collect-meta.sh                           # tests, coverage and Slither summary -> results/meta.json
 ```
 
-Expected result: **7 passing tests**.
+Figures: `paper-figures/fig1_state_machine.dot` (Graphviz), `paper-figures/make_fig_architecture.py`, `paper-figures/make_fig_results.py`.
 
 ## Deploy locally
 
