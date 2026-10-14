@@ -1,0 +1,185 @@
+{
+  "generatedAt": "2026-10-14T17:05:43.303Z",
+  "operations_m4k2": {
+    "reportEventFirst": 282100,
+    "reportEvent": 265000,
+    "voteFirst": 81810,
+    "voteDecisiveApprove": 81393,
+    "actionEvent": 58136,
+    "closeEvent": 58566,
+    "voteDecisiveReject": 82052,
+    "finalizeTimeoutToDisputed": 49347,
+    "finalizeTimeoutToRejected": 49573,
+    "breakGlass": 77198,
+    "govPropose": 125099,
+    "govApproveExecute": 113711
+  },
+  "operations_m5k3": {
+    "reportEventFirst": 282100,
+    "reportEvent": 265000,
+    "voteFirst": 81810,
+    "voteIntermediate": 59741,
+    "voteDecisiveApprove": 81393,
+    "actionEvent": 58136,
+    "closeEvent": 58566,
+    "voteDecisiveReject": 82052,
+    "finalizeTimeoutToDisputed": 49347,
+    "finalizeTimeoutToRejected": 49573,
+    "breakGlass": 77198,
+    "govPropose": 125099,
+    "govApproveExecute": 113711
+  },
+  "singleAuthority": {
+    "reportEvent": 264988,
+    "voteDecisiveApprove": 81224,
+    "total": 346212
+  },
+  "v1Original": {
+    "addAuthority": 94053,
+    "reportEventFirst": 251329,
+    "reportEvent": 234241,
+    "voteFirst": 243109,
+    "voteDecisiveApprove": 207605
+  },
+  "batch": [
+    {
+      "batchSize": 1,
+      "totalGas": 282950,
+      "gasPerEvent": 282950
+    },
+    {
+      "batchSize": 5,
+      "totalGas": 1175715,
+      "gasPerEvent": 235143
+    },
+    {
+      "batchSize": 10,
+      "totalGas": 2291699,
+      "gasPerEvent": 229169.9
+    },
+    {
+      "batchSize": 25,
+      "totalGas": 5639696,
+      "gasPerEvent": 225587.84
+    },
+    {
+      "batchSize": 50,
+      "totalGas": 11220390,
+      "gasPerEvent": 224407.8
+    }
+  ],
+  "thresholds": [
+    {
+      "m": 3,
+      "k": 2,
+      "txApprove": 3,
+      "gasApprove": 428191,
+      "txReject": 3,
+      "gasReject": 428850,
+      "pFalseAccept_q05": 0.007250000000000001,
+      "pFalseAccept_q10": 0.028000000000000008,
+      "pDecision_a90": 0.9720000000000001,
+      "pDecision_a80": 0.8960000000000001,
+      "collusionTolerance": 1,
+      "crashTolerance": 1
+    },
+    {
+      "m": 4,
+      "k": 2,
+      "txApprove": 3,
+      "gasApprove": 428191,
+      "txReject": 4,
+      "gasReject": 488567,
+      "pFalseAccept_q05": 0.014018750000000002,
+      "pFalseAccept_q10": 0.05230000000000001,
+      "pDecision_a90": 0.9963000000000001,
+      "pDecision_a80": 0.9728,
+      "collusionTolerance": 1,
+      "crashTolerance": 2
+    },
+    {
+      "m": 4,
+      "k": 3,
+      "txApprove": 4,
+      "gasApprove": 487944,
+      "txReject": 3,
+      "gasReject": 428838,
+      "pFalseAccept_q05": 0.0004812500000000001,
+      "pFalseAccept_q10": 0.0037000000000000006,
+      "pDecision_a90": 0.9477000000000001,
+      "pDecision_a80": 0.8192000000000002,
+      "collusionTolerance": 2,
+      "crashTolerance": 1
+    },
+    {
+      "m": 5,
+      "k": 3,
+      "txApprove": 4,
+      "gasApprove": 487920,
+      "txReject": 4,
+      "gasReject": 488579,
+      "pFalseAccept_q05": 0.0011581250000000003,
+      "pFalseAccept_q10": 0.008560000000000002,
+      "pDecision_a90": 0.9914400000000001,
+      "pDecision_a80": 0.94208,
+      "collusionTolerance": 2,
+      "crashTolerance": 2
+    },
+    {
+      "m": 7,
+      "k": 4,
+      "txApprove": 5,
+      "gasApprove": 547685,
+      "txReject": 5,
+      "gasReject": 548296,
+      "pFalseAccept_q05": 0.000193578125,
+      "pFalseAccept_q10": 0.002728000000000001,
+      "pDecision_a90": 0.9972719999999999,
+      "pDecision_a80": 0.9666560000000001,
+      "collusionTolerance": 3,
+      "crashTolerance": 3
+    },
+    {
+      "m": 7,
+      "k": 5,
+      "txApprove": 6,
+      "gasApprove": 607402,
+      "txReject": 4,
+      "gasReject": 488555,
+      "pFalseAccept_q05": 0.000006027343750000001,
+      "pFalseAccept_q10": 0.00017650000000000006,
+      "pDecision_a90": 0.9743085,
+      "pDecision_a80": 0.8519680000000001,
+      "collusionTolerance": 4,
+      "crashTolerance": 2
+    },
+    {
+      "m": 9,
+      "k": 5,
+      "txApprove": 6,
+      "gasApprove": 607426,
+      "txReject": 6,
+      "gasReject": 608037,
+      "pFalseAccept_q05": 0.00003322220703125001,
+      "pFalseAccept_q10": 0.0008909200000000003,
+      "pDecision_a90": 0.99910908,
+      "pDecision_a80": 0.9804185599999999,
+      "collusionTolerance": 4,
+      "crashTolerance": 4
+    },
+    {
+      "m": 9,
+      "k": 7,
+      "txApprove": 8,
+      "gasApprove": 726896,
+      "txReject": 4,
+      "gasReject": 488579,
+      "pFalseAccept_q05": 2.571875000000001e-8,
+      "pFalseAccept_q10": 0.000002998000000000001,
+      "pDecision_a90": 0.9470278620000001,
+      "pDecision_a80": 0.7381975040000002,
+      "collusionTolerance": 6,
+      "crashTolerance": 2
+    }
+  ]
+}
