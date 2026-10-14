@@ -35,8 +35,3 @@ Figures: `paper-figures/fig1_state_machine.dot` (Graphviz), `paper-figures/make_
 ```bash
 npx hardhat run scripts/deploy.js
 ```
-
-## Paper reference
-
-**Springer Book Chapter - ChainProv-City**  
-*ChainProv-City: Authority-Based Blockchain Provenance for Smart City Surveillance*
